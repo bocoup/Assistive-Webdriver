@@ -1,1 +1,5 @@
 build/
+deps/
+dist/
+AutomationVoice.plist
+distribution.plist
