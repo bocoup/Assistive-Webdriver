@@ -29,3 +29,10 @@ curl \
   --output setAutoLogin.sh \
   https://raw.githubusercontent.com/bocoup/macAdminTools/main/Scripts/setAutoLogin.sh
 sudo bash setAutoLogin.sh vagrant vagrant
+
+# Install the Automation Voice
+curl \
+  --location \
+  --output AutomationVoice.pkg \
+  https://github.com/bocoup/Assistive-Webdriver/releases/download/macos1015/AutomationVoice.pkg
+sudo installer -pkg ./AutomationVoice.pkg -target /

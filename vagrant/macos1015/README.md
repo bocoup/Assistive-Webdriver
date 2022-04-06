@@ -17,7 +17,7 @@ providing the following information:
 
 Then (still in the guest system) execute the following commands in a terminal:
 
-    $ curl --output provision.sh https://github.com/bocoup/Assistive-Webdriver/blob/macos1015/vagrant/macos1015/provision.sh
+    $ curl --output provision.sh https://raw.githubusercontent.com/bocoup/Assistive-Webdriver/macos1015/vagrant/macos1015/provision.sh
     $ sudo bash ./provision.sh
 
 Then (still in the guest system) enable VoiceOver and set the text-to-speech

@@ -8,12 +8,4 @@ Vagrant.configure("2") do |config|
   # > guests. BSD-based guests do not support the VirtualBox filesystem at this
   # > time.
   config.vm.synced_folder ".", "/vagrant", disabled: true
-
-  config.vm.provision "setup",
-    type: "shell",
-    inline: <<-SHELL
-
-      echo Installing Automation Voice
-      sudo installer -pkg ./host/AutomationVoice.pkg -target /
-  SHELL
 end
