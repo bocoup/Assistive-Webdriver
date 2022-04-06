@@ -17,18 +17,19 @@ providing the following information:
 
 Then (still in the guest system) execute the following commands in a terminal:
 
-    $ sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
-    $ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
-    $ mkdir -m 0700 /Users/vagrant/.ssh
-    $ curl https://raw.githubusercontent.com/hashicorp/vagrant/main/keys/vagrant.pub --output /Users/vagrant/.ssh/authorized_keys
-    $ chmod 0600 /Users/vagrant/.ssh/authorized_keys
-    $ dd if=/dev/zero of=/Users/vagrant/EMPTY bs=1m
-    $ rm /Users/vagrant/EMPTY
+    $ curl --output provision.sh https://github.com/bocoup/Assistive-Webdriver/blob/macos1015/vagrant/macos1015/provision.sh
+    $ sudo bash ./provision.sh
 
-    $ echo 'vagrant ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
+Then (still in the guest system) enable VoiceOver and set the text-to-speech
+voice named "Cher":
 
-    $ sudo dseditgroup -o create vagrant
-    $ sudo dseditgroup -o edit -a vagrant -t user vagrant
+    1. Open the "System Preferences" application
+    2. Select "Accessibility"
+    3. Select "VoiceOver"
+    4. Enable the checkbox labeled "Enable VoiceOver"
+    5. Select "Open VoiceOver Utility..."
+    6. Select "Speech"
+    7. Open the drop-down menu for "Voice" and select "Cher"
 
 Next, **on the host system**, shut down the virtual machine, rename it
 `vagrant-macos-1015`, and run the following command:

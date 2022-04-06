@@ -9,14 +9,9 @@ Vagrant.configure("2") do |config|
   # > time.
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
-  config.vm.synced_folder ".", "/Users/vagrant/host", type: "rsync",
-    rsync__exclude: ".git/"
-
   config.vm.provision "setup",
     type: "shell",
     inline: <<-SHELL
-      echo Enabling automatic login
-      sudo ./host/setAutoLogin.sh vagrant vagrant
 
       echo Installing Automation Voice
       sudo installer -pkg ./host/AutomationVoice.pkg -target /
