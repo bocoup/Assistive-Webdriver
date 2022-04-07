@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "package.box"
+  config.vm.box = "bocoup/macos-10.15"
 
   # > Vagrant is not able to mount VirtualBox shared folders on BSD-based
   # > guests. BSD-based guests do not support the VirtualBox filesystem at this
