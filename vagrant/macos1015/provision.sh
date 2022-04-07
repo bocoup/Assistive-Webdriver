@@ -36,3 +36,10 @@ curl \
   --output AutomationVoice.pkg \
   https://github.com/bocoup/Assistive-Webdriver/releases/download/macos1015/AutomationVoice.pkg
 sudo installer -pkg ./AutomationVoice.pkg -target /
+
+# Install Node.js
+curl \
+  --location \
+  --output node-v16.14.2.pkg \
+  https://nodejs.org/dist/v16.14.2/node-v16.14.2.pkg
+sudo installer -pkg ./node-v16.14.2.pkg -target /
