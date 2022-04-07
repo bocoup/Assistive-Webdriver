@@ -17,7 +17,7 @@ echo 'Configuring `sudo` to operate without requiring a password...'
 echo 'vagrant ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
 
 echo 'Creating a group named `vagrant` (necessary for rsync-backed file sharing)...'
-sudo dseditgroup -o create vagrant
+sudo dseditgroup -q -o create vagrant
 sudo dseditgroup -o edit -a vagrant -t user vagrant
 
 echo 'Enabling automatically login to the `vagrant` account...'
