@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Enable SSH
 sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
 sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
@@ -20,15 +22,12 @@ echo 'vagrant ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
 sudo dseditgroup -o create vagrant
 sudo dseditgroup -o edit -a vagrant -t user vagrant
 
-# Optimize the size of the virtual machine image
-dd if=/dev/zero of=/Users/vagrant/EMPTY bs=1m
-rm /Users/vagrant/EMPTY
-
 # Automatically log in to the `vagrant` account
 curl \
   --output setAutoLogin.sh \
-  https://raw.githubusercontent.com/bocoup/macAdminTools/main/Scripts/setAutoLogin.sh
+  https://raw.githubusercontent.com/bocoup/Assistive-Webdriver/macos1015/vagrant/macos1015/setAutoLogin.sh
 sudo bash setAutoLogin.sh vagrant vagrant
+rm setAutoLogin.sh
 
 # Install the Automation Voice
 curl \
@@ -36,6 +35,7 @@ curl \
   --output AutomationVoice.pkg \
   https://github.com/bocoup/Assistive-Webdriver/releases/download/macos1015/AutomationVoice.pkg
 sudo installer -pkg ./AutomationVoice.pkg -target /
+rm ./AutomationVoice.pkg
 
 # Install Node.js
 curl \
@@ -43,3 +43,8 @@ curl \
   --output node-v16.14.2.pkg \
   https://nodejs.org/dist/v16.14.2/node-v16.14.2.pkg
 sudo installer -pkg ./node-v16.14.2.pkg -target /
+rm ./node-v16.14.2.pkg
+
+# Optimize the size of the virtual machine image
+dd if=/dev/zero of=/Users/vagrant/EMPTY bs=1m
+rm /Users/vagrant/EMPTY
