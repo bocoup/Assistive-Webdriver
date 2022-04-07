@@ -43,6 +43,12 @@ curl \
 sudo installer -pkg ./node-v16.14.2.pkg -target /
 rm ./node-v16.14.2.pkg
 
+echo 'Installing assistive-playwright-server...'
+npm install -g assistive-playwright-server
+
+echo 'Installing tcp-web-listener...'
+npm install -g tcp-web-listener
+
 echo 'Optimizing the size of the virtual machine image...'
 dd if=/dev/zero of=/Users/vagrant/EMPTY bs=1m
 rm /Users/vagrant/EMPTY
