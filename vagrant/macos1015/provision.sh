@@ -91,6 +91,9 @@ echo 'Disabling screen saver...'
 # Source: https://discussions.apple.com/thread/7610386
 sudo -u vagrant defaults -currentHost write com.apple.screensaver idleTime 0
 
+echo 'Disabling automatic software updates...'
+sudo softwareupdate --schedule off
+
 echo 'Optimizing the size of the virtual machine image...'
 dd if=/dev/zero of=/Users/vagrant/EMPTY bs=1m || true
 rm /Users/vagrant/EMPTY
