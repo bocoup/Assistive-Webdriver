@@ -79,6 +79,10 @@ cat <<HERE | sudo tee /Library/LaunchDaemons/assistive-playwright-server.plist >
 HERE
 sudo launchctl load -w /Library/LaunchDaemons/assistive-playwright-server.plist
 
+echo 'Disabling screen saver...'
+# Source: https://discussions.apple.com/thread/7610386
+sudo -u vagrant defaults -currentHost write com.apple.screensaver idleTime 0
+
 echo 'Optimizing the size of the virtual machine image...'
 dd if=/dev/zero of=/Users/vagrant/EMPTY bs=1m || true
 rm /Users/vagrant/EMPTY
