@@ -30,7 +30,8 @@ voice named "Cher":
 5. Select "Open VoiceOver Utility..."
 6. Select "Speech"
 7. Open the drop-down menu for "Voice" and select "Cher"
-8. Close the "System Preferences" application
+8. Close the window named "VoiceOver Utility"
+9. Close the "System Preferences" application
 
 Next, **on the host system**, shut down the virtual machine, rename it
 `vagrant-macos-1015`, and run the following command:
