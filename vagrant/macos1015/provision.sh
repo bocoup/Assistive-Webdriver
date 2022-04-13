@@ -49,6 +49,36 @@ npm install -g assistive-playwright-server
 echo 'Installing tcp-web-listener...'
 npm install -g tcp-web-listener
 
+echo 'Defining daemon for assistive-playwright-server...'
+cat <<HERE | sudo tee /Library/LaunchDaemons/assistive-playwright-server.plist > /dev/null
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>assistive-playwright-server</string>
+    <key>Program</key>
+    <string>/usr/local/bin/node</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>node</string>
+        <string>/usr/local/bin/assistive-playwright-server</string>
+    </array>
+    <key>KeepAlive</key>
+    <true/>
+    <key>Disabled</key>
+    <false/>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/var/log/assistive-playwright-server-out.txt</string>
+    <key>StandardErrorPath</key>
+    <string>/var/log/assistive-playwright-server-err.txt</string>
+</dict>
+</plist>
+HERE
+sudo launchctl load -w /Library/LaunchDaemons/assistive-playwright-server.plist
+
 echo 'Optimizing the size of the virtual machine image...'
 dd if=/dev/zero of=/Users/vagrant/EMPTY bs=1m || true
 rm /Users/vagrant/EMPTY
