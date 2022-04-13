@@ -79,6 +79,14 @@ cat <<HERE | sudo tee /Library/LaunchDaemons/assistive-playwright-server.plist >
 HERE
 sudo launchctl load -w /Library/LaunchDaemons/assistive-playwright-server.plist
 
+echo 'Disabling system sleep...'
+# This first command likely subsumes those that follow, however, they are all
+# executed because the available documentation does not make this claim.
+sudo systemsetup -setsleep Never
+sudo systemsetup -setcomputersleep Never
+sudo systemsetup -setdisplaysleep Never
+sudo systemsetup -setharddisksleep Never
+
 echo 'Disabling screen saver...'
 # Source: https://discussions.apple.com/thread/7610386
 sudo -u vagrant defaults -currentHost write com.apple.screensaver idleTime 0
