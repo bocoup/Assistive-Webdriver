@@ -36,4 +36,4 @@ voice named "Cher":
 Next, **on the host system**, shut down the virtual machine, rename it
 `vagrant-macos-1015`, and run the following command:
 
-    $ vagrant package --base vagrant-macos-1015
+    $ vagrant package --vagrantfile Vagrantfile --base vagrant-macos-1015
