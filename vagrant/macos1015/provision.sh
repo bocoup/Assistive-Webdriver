@@ -12,6 +12,7 @@ curl \
   --output /Users/vagrant/.ssh/authorized_keys \
   https://raw.githubusercontent.com/hashicorp/vagrant/main/keys/vagrant.pub
 chmod 0600 /Users/vagrant/.ssh/authorized_keys
+sudo chown -R vagrant .ssh
 
 echo 'Configuring `sudo` to operate without requiring a password...'
 echo 'vagrant ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
