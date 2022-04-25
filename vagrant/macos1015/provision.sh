@@ -65,6 +65,12 @@ cat <<HERE | sudo tee /Library/LaunchDaemons/assistive-playwright-server.plist >
         <string>node</string>
         <string>/usr/local/bin/assistive-playwright-server</string>
     </array>
+    <key>UserName</key>
+    <string>vagrant</string>
+    <key>GroupName</key>
+    <string>staff</string>
+    <key>InitGroups</key>
+    <true/>
     <key>KeepAlive</key>
     <true/>
     <key>Disabled</key>
@@ -78,6 +84,12 @@ cat <<HERE | sudo tee /Library/LaunchDaemons/assistive-playwright-server.plist >
 </dict>
 </plist>
 HERE
+# Although launchd.plist(5) states that log files will be created according to
+# the `UserName` and `GroupName` values, the service has been observed to fail
+# if these files are absent when it is enabled (perhaps because the `vagrant`
+# user lacks permission to write to the `/var/log` directory).
+sudo touch /var/log/assistive-playwright-server-out.txt /var/log/assistive-playwright-server-err.txt
+sudo chown vagrant:staff /var/log/assistive-playwright-server-out.txt /var/log/assistive-playwright-server-err.txt
 sudo launchctl load -w /Library/LaunchDaemons/assistive-playwright-server.plist
 
 echo 'Disabling system sleep...'
