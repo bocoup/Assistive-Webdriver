@@ -36,7 +36,12 @@ voice named "Cher":
 Next, **on the host system**, install VirtualBox Guest Additions:
 
 1. **On the host system**, use the VirtualBox user interface to select the
-   "Devices" menu, and the "Insert Guest Additions CD image..." menu item
+   "Devices" menu, and the "Insert Guest Additions CD image..." menu item. (If
+   VirtualBox reports an error for this step, then mount the CD image using
+   VirtualBox's generic mechanism: shut down the virtual machine, open its
+   "Settings" menu, navigate to the "Storage" tab, select the "Adds optical
+   drive." button, select `VBoxGuestAdditions.iso` from the list that appears,
+   and start the virtual machine again.)
 2. **On the guest system**, open the disc that appears on the Desktop
 3. Run the file named `VBoxDarwinAdditions.pkg`
 4. Advance through the installation prompts. The installation is expected to fail.
